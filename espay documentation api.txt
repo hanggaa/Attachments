@@ -1,0 +1,110 @@
+### GENERATE VA ####
+rq_uuid=MVBill-2026-09-00026&rq_datetime=2026-09-11 09:15:30&order_id=085711170903&ccy=IDR&bank_code=008&va_expired=120&amount=1003885&comm_code=SGW1000SAUDARA&update=Y&signature=4785c680b8d5cb56321783b67843e75375a13e60a609833744e13c914126c40d&remark1=085711170903&remark2=TB. TESTER AKBAR TESTER MSS&remark4=085711170903
+
+### INQURY STATUS WITH PAYMENT REFF ###
+
+### REQUEST ####
+
+curl --location 'https://sandbox-api.espay.id/apimerchant/v1.0/transfer-va/status' \
+--header 'Content-Type: application/json' \
+--header 'X-TIMESTAMP: 2026-09-11T09:37:52+07:00' \
+--header 'X-SIGNATURE: DX8xFCClgBxPZLXGgP6EQpy2UfUGi88XWNyJvZAzoKWEsNgRYjNZLl+s52W3aB98mp6ye0EHo11k08hkTn3QBKYJuz+Yj9EQ8QqZsTBRJJzdSmK7ZE0Cun+KxMOkcH9KAiGoDiwCE3u/FN+ovRppdDkHufUKLYkSf6qjzLo1LICWbry11agMnrxu6qV0OVBAwK1cCX+gcz8vsthitueeEL1mtOjwEbUdUhE/yBjQA/mPH8BvyB2fXMRe6eSwUkmzDQXZa+ONwcEWr4Wk+1/Ri9DUgO1HWpObA0HpYgdigkFp0PxiQZcDHWyMR6I6ER219Ysf3nLHhKTEhMjLEBheuA==' \
+--header 'X-EXTERNAL-ID: 2026091109375271513873' \
+--header 'X-PARTNER-ID: SGW1000SAUDARA' \
+--header 'CHANNEL-ID: ESPAY' \
+--header 'Cookie: sl-session=SiyOC2mDo2rz1fG88EF5DQ==' \
+--data '{
+    "partnerServiceId": " ESPAY",
+    "customerNo": "SGW1000SAUDARA",
+    "virtualAccountNo": "8920825734423864",
+    "additionalInfo": {
+        "paymentRef": "ESP178909420434DM"
+    }
+}'
+
+### RESPONSE ####
+
+{
+    "responseCode": "2002600",
+    "responseMessage": "Successful",
+    "virtualAccountData": {
+        "partnerServiceId": " ESPAY",
+        "customerNo": "SGW1000SAUDARA",
+        "paymentFlagStatus": "SP",
+        "paymentFlagReason": {
+            "english": "Suspect",
+            "indonesia": "Suspect"
+        },
+        "virtualAccountNo": "8920825734423864",
+        "inquiryRequestId": null,
+        "paidAmount": {
+            "value": "1003885.00",
+            "currency": "IDR"
+        },
+        "totalAmount": {
+            "value": "1003885.00",
+            "currency": "IDR"
+        },
+        "trxDateTime": "2026-09-11T09:36:35+07:00",
+        "transactionDate": "2026-09-11T09:36:35+07:00",
+        "billDetails": [
+            {
+                "billAmount": {
+                    "value": "1003885.00",
+                    "currency": "IDR"
+                },
+                "billDescription": {
+                    "english": "Invoice 8920825734423864",
+                    "indonesia": "Invoice 8920825734423864"
+                }
+            }
+        ]
+    },
+    "additionalInfo": {
+        "trxId": "ESP178909420434DM",
+        "expiredDatetime": "2026-09-12 09:36:35",
+        "memberCode": "SGW1000SAUDARA",
+        "debitFrom": "",
+        "debitFromName": "8920825734423864",
+        "debitFromBank": "008",
+        "creditTo": "1111111111",
+        "creditToName": "1111111111",
+        "creditToBank": "008",
+        "productCode": "MANDIRIATM",
+        "productValue": "8920825734423864",
+        "rrn": null,
+        "approvalCode": "17890942032910593664#8920825734423864#6aa3693beaab1",
+        "token": "",
+        "userId": null,
+        "feeType": "S",
+        "txFee": "0.00",
+        "cardType": "",
+        "refundData": null
+    }
+}
+
+### INQURY STATUS WITH PAYMENT Bill No ###
+
+### Request ###
+curl --location 'https://sandbox-api.espay.id/apimerchant/v1.0/transfer-va/status' \
+--header 'Content-Type: application/json' \
+--header 'X-TIMESTAMP: 2026-09-11T09:37:52+07:00' \
+--header 'X-SIGNATURE: DX8xFCClgBxPZLXGgP6EQpy2UfUGi88XWNyJvZAzoKWEsNgRYjNZLl+s52W3aB98mp6ye0EHo11k08hkTn3QBKYJuz+Yj9EQ8QqZsTBRJJzdSmK7ZE0Cun+KxMOkcH9KAiGoDiwCE3u/FN+ovRppdDkHufUKLYkSf6qjzLo1LICWbry11agMnrxu6qV0OVBAwK1cCX+gcz8vsthitueeEL1mtOjwEbUdUhE/yBjQA/mPH8BvyB2fXMRe6eSwUkmzDQXZa+ONwcEWr4Wk+1/Ri9DUgO1HWpObA0HpYgdigkFp0PxiQZcDHWyMR6I6ER219Ysf3nLHhKTEhMjLEBheuA==' \
+--header 'X-EXTERNAL-ID: 2026091109375271513873' \
+--header 'X-PARTNER-ID: SGW1000SAUDARA' \
+--header 'CHANNEL-ID: ESPAY' \
+--header 'Cookie: sl-session=SiyOC2mDo2rz1fG88EF5DQ==' \
+--data '{
+    "partnerServiceId": " ESPAY",
+    "customerNo": "SGW1000SAUDARA",
+    "virtualAccountNo": "8920825734423864",
+    "additionalInfo": {
+        "billNo": "085711170903"
+    }
+}'
+
+### Response ###
+{
+    "responseCode": "4042608",
+    "responseMessage": "Transaction Not Found"
+}
